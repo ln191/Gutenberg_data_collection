@@ -75,7 +75,7 @@ namespace Rdf_Converter
                 }
 
                 i++;
-                if (i == 5)
+                if (i == 5000)
                 {
                     //add books to books csv
                     foreach (var book in Books)
@@ -110,6 +110,27 @@ namespace Rdf_Converter
             File.AppendAllText(csvAuthorPath, csvAuthorBuilder.ToString());
             csvAuthorBuilder.Clear();
             Console.WriteLine("csv file has been created, is Done!!!");
+
+            //add book author relations to csv file
+            foreach (var relation in relations)
+            {
+                string[] relationData = relation.Values.ToArray();
+                csvBookAuthorRelationBuilder.AppendLine(String.Join(",", relationData));
+            }
+            File.AppendAllText(csvBookAuthorRelationPath, csvBookAuthorRelationBuilder.ToString());
+            csvBookAuthorRelationBuilder.Clear();
+            relations.Clear();
+
+            //add books to books csv
+            foreach (var book in Books)
+            {
+                string[] rowData = book.Values.ToArray();
+                csvBookBuilder.AppendLine(String.Join(",", rowData));
+            }
+            File.AppendAllText(csvBooksPath, csvBookBuilder.ToString());
+            csvBookBuilder.Clear();
+            Books.Clear();
+
             Console.Read();
         }
     }
