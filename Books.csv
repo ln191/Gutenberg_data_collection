@@ -1,4 +1,4 @@
-﻿pg_id:ID(Book),title,language
+﻿id,title,language
 1,The Declaration of Independence of the United States of America,en
 10,The King James Version of the Bible,en
 100,The Complete Works of William Shakespeare,en

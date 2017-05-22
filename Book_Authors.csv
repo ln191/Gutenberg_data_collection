@@ -1,4 +1,4 @@
-﻿:START_ID(Book),:END_ID(Author)
+﻿book_id,Author
 1,Jefferson, Thomas
 10,Unknown Author
 100,Shakespeare, William
