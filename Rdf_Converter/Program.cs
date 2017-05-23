@@ -52,6 +52,8 @@ namespace Rdf_Converter
                     bookData["Title"] = bookData["Title"].Replace("\r\n", "  "); //windows
                     bookData["Title"] = bookData["Title"].Replace("\n", "  "); //linux
                     bookData["Title"] = bookData["Title"].Replace("\r", "  "); //mac
+                    bookData["Title"] = bookData["Title"].Replace("\"", "  ");
+
                     //if title has comma in the string, the string will be surrounded by double quotes
                     if (bookData["Title"].Contains(","))
                     {
