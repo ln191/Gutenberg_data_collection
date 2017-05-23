@@ -62,6 +62,7 @@ namespace Rdf_Converter
 
                     if (!authors.Contains(bookData["Author"]))
                     {
+                        bookData["Author"] = "\"" + bookData["Author"] + "\"";
                         authors.Add(bookData["Author"]);
                     }
 
