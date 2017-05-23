@@ -11,7 +11,7 @@ namespace Gutenberg_data_collection
         private static void Main(string[] args)
         {
             CSVConverter converter = new CSVConverter();
-            Console.WriteLine("Hey please type in the path of the csv file you want to extract data from: ");
+            Console.WriteLine("Hey please type in the path of the Tsv file you want to extract data from: ");
             string tsvPath = Console.ReadLine();
             Console.WriteLine("please type in the path for the output csv file: ");
             string outcsvPath = Console.ReadLine();

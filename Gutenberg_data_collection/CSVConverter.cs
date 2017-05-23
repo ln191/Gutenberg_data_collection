@@ -34,11 +34,11 @@ namespace Gutenberg_data_collection
         }
 
         /// <summary>
-        /// Extracts given column data from the CSV file
+        /// Extracts given column data from the TSV file
         /// </summary>
-        /// <param name="csvPath">The string path to the CSV file</param>
+        /// <param name="csvPath">The string path to the TSV file</param>
         /// <param name="columumDataSelect">What columns to Extract data from</param>
-        /// <returns>A List of each row in CSV file, as a lists of string</returns>
+        /// <returns>A List of each row in TSV file, as a lists of string</returns>
         public List<List<string>> ExtractCSVData(string csvPath, List<int> columumDataSelect)
         {
             using (TextFieldParser parser = new TextFieldParser(csvPath))
@@ -55,7 +55,16 @@ namespace Gutenberg_data_collection
                     foreach (int fieldNum in columumDataSelect)
                     {
                         Console.WriteLine(fieldNum + " " + fields[fieldNum]);
-                        selectedData.Add(fields[fieldNum]);
+                        if (fieldNum == 1 && fields[fieldNum].Contains(","))
+                        {
+                            string city_name = fields[fieldNum];
+                            city_name = "\"" + city_name + "\"";
+                            selectedData.Add(city_name);
+                        }
+                        else
+                        {
+                            selectedData.Add(fields[fieldNum]);
+                        }
                     }
                     dataLists.Add(selectedData);
                 }
@@ -65,11 +74,11 @@ namespace Gutenberg_data_collection
         }
 
         /// <summary>
-        /// Extracts given column data from the CSV file
+        /// Extracts given column data from the TSV file
         /// </summary>
-        /// <param name="csvPath">The string path to the CSV file</param>
+        /// <param name="csvPath">The string path to the TSV file</param>
         /// <param name="columumDataSelect">What columns to Extract data from</param>
-        /// <returns>A List of each row in CSV file, as a lists of string</returns>
+        /// <returns>A List of each row in TSV file, as a lists of string</returns>
         public void ExtractCSVData2(string tsvPath, string csvPath, List<int> columumDataSelect)
         {
             using (TextFieldParser parser = new TextFieldParser(tsvPath))
@@ -92,8 +101,16 @@ namespace Gutenberg_data_collection
 
                         foreach (int fieldNum in columumDataSelect)
                         {
-                            // Console.WriteLine(fieldNum + " " + fields[fieldNum]);
-                            selectedData.Add(fields[fieldNum]);
+                            if (fieldNum == 1 && fields[fieldNum].Contains(","))
+                            {
+                                string city_name = fields[fieldNum];
+                                city_name = "\"" + city_name + "\"";
+                                selectedData.Add(city_name);
+                            }
+                            else
+                            {
+                                selectedData.Add(fields[fieldNum]);
+                            }
                         }
                         csvContent.AppendLine(String.Join(",", selectedData.ToArray()));
                         if (i == 5000)
